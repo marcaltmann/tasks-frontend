@@ -8,10 +8,10 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: 'Category',
+  name: "Category",
   props: {
-    name: String,
-  },
+    name: String
+  }
 });
 </script>
 
