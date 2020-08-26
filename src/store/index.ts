@@ -6,14 +6,18 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     tasks: [
-      { id: "0", content: "Ha", category: "Communicate" },
-      { id: "1", content: "What?", category: "Home" },
-      { id: "2", content: "Hallo", category: "Communicate" },
-      { id: "3", content: "Hello", category: "Town" }
+      { id: "0", content: "Call agent and ask about job offers", category: "Communicate" },
+      { id: "1", content: "Lookup tax documents 2019", category: "Home" },
+      { id: "2", content: "Write letter cancelling old phone contract", category: "Communicate" },
+      { id: "3", content: "Pick up pens from Dussmann", category: "Town" }
     ],
     categories: ["Communicate", "Home", "Town"]
   },
-  mutations: {},
+  mutations: {
+    deleteTask(state, id: string) {
+      state.tasks = state.tasks.filter(task => task.id !== id);
+    }
+  },
   actions: {},
   modules: {}
 });

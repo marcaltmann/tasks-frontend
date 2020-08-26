@@ -1,5 +1,12 @@
 <template>
-  <p v-on:click="toggle" :class="{ enabled: isEnabled }">{{ content }}</p>
+  <div class="task" :class="{ enabled: enabled }">
+    <div v-on:click="toggle">{{ content }}</div>
+    <div v-if="enabled">
+      <button type="button" v-on:click="remove">
+        Done
+      </button>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -19,12 +26,15 @@ export default Vue.extend({
   },
   data() {
     return {
-      isEnabled: false
+      enabled: false
     };
   },
   methods: {
+    remove() {
+      this.$store.commit("deleteTask", this.id);
+    },
     toggle() {
-      this.isEnabled = !this.isEnabled;
+      this.enabled = !this.enabled;
     }
   }
 });
@@ -34,14 +44,14 @@ export default Vue.extend({
 <style scoped lang="scss">
 @import "@/_variables.scss";
 
-p {
+.task {
   background-color: $primary_color;
   font-style: italic;
   margin: 1em 0 0;
   user-select: none;
 }
 
-p.enabled {
+.task.enabled {
   background-color: $secondary-color;
 }
 </style>
