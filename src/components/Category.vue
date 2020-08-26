@@ -2,8 +2,8 @@
   <article class="category">
     <h3>{{ name }}</h3>
     <ul>
-      <li v-for="task in tasks" :key="task.content">
-        <Task v-bind:content="task.content" />
+      <li v-for="task in tasks" :key="task.id">
+        <Task :id="task.id" :content="task.content" />
       </li>
     </ul>
   </article>

@@ -18,21 +18,17 @@ import Category from "@/components/Category.vue";
 export default Vue.extend({
   name: "Home",
   components: {
-    Category,
+    Category
   },
   data() {
     return {
       tasks1: [
-        { content: 'Ha' },
-        { content: 'What?' }
+        { id: "0", content: "Ha" },
+        { id: "1", content: "What?" }
       ],
-      tasks2: [
-        { content: 'Huhu' }
-      ],
-      tasks3: [
-        { content: 'Hallo' }
-      ],
-      tasks4: [],
+      tasks2: [{ id: "0", content: "Huhu" }],
+      tasks3: [{ id: "1", content: "Hallo" }],
+      tasks4: []
     };
   }
 });
