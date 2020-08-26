@@ -11,16 +11,24 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Task from "@/components/Task.vue";
+import Task, { TaskType } from "@/components/Task.vue";
 
 export default Vue.extend({
   name: "Category",
   components: {
     Task
   },
+  computed: {
+    tasks() {
+      const allTasks = this.$store.state.tasks;
+      const tasks = allTasks.filter(
+        (task: TaskType) => task.category === this.name
+      );
+      return tasks;
+    }
+  },
   props: {
-    name: String,
-    tasks: Array
+    name: String
   }
 });
 </script>

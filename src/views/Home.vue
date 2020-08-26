@@ -3,10 +3,7 @@
     <h1>Tasks</h1>
 
     <div class="grid">
-      <Category name="Communicate" :tasks="tasks1" />
-      <Category name="Home" :tasks="tasks2" />
-      <Category name="Town" :tasks="tasks3" />
-      <Category name="Other" :tasks="tasks4" />
+      <Category v-for="cat in categories" :name="cat" :key="cat" />
     </div>
   </div>
 </template>
@@ -20,16 +17,10 @@ export default Vue.extend({
   components: {
     Category
   },
-  data() {
-    return {
-      tasks1: [
-        { id: "0", content: "Ha" },
-        { id: "1", content: "What?" }
-      ],
-      tasks2: [{ id: "0", content: "Huhu" }],
-      tasks3: [{ id: "1", content: "Hallo" }],
-      tasks4: []
-    };
+  computed: {
+    categories() {
+      return this.$store.state.categories;
+    }
   }
 });
 </script>

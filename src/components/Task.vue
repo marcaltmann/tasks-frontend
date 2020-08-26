@@ -1,9 +1,15 @@
 <template>
-  <p v-on:click="toggle" v-bind:class="{ enabled: isEnabled }">{{ content }}</p>
+  <p v-on:click="toggle" :class="{ enabled: isEnabled }">{{ content }}</p>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+
+export interface TaskType {
+  id: number;
+  content: string;
+  category: string;
+}
 
 export default Vue.extend({
   name: "Task",
