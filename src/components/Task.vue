@@ -1,28 +1,48 @@
 <template>
-  <div class="task" :class="{ enabled: enabled }">
-    <div v-on:click="toggle">{{ content }}</div>
+  <li class="task" :style="{ backgroundColor: color }" v-on:click="toggle">
+    <div>{{ task.content }}</div>
     <div v-if="enabled">
       <button type="button" v-on:click="remove">
         Done
       </button>
     </div>
-  </div>
+  </li>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 
 export interface TaskType {
-  id: number;
+  id: string;
   content: string;
   category: string;
+  project: string;
+}
+
+interface ProjectType {
+  id: string;
+  name: string;
+  color: string;
 }
 
 export default Vue.extend({
   name: "Task",
   props: {
-    id: String,
-    content: String
+    id: String
+  },
+  computed: {
+    task() {
+      return this.$store.state.tasks.find(
+        (task: TaskType) => task.id === this.id
+      );
+    },
+    color() {
+      const projectId = this.task.project;
+      const project = this.$store.state.projects.find(
+        (proj: ProjectType) => proj.id === projectId
+      );
+      return project.color;
+    }
   },
   data() {
     return {
@@ -45,13 +65,10 @@ export default Vue.extend({
 @import "@/_variables.scss";
 
 .task {
-  background-color: $primary_color;
+  cursor: pointer;
   font-style: italic;
   margin: 1em 0 0;
+  padding: 0.25em 0.5em;
   user-select: none;
-}
-
-.task.enabled {
-  background-color: $secondary-color;
 }
 </style>

@@ -2,9 +2,7 @@
   <article class="category">
     <h3>{{ name }}</h3>
     <ul>
-      <li v-for="task in tasks" :key="task.id">
-        <Task :id="task.id" :content="task.content" />
-      </li>
+      <Task v-for="task in tasks" :key="task.id" :id="task.id" />
     </ul>
   </article>
 </template>
