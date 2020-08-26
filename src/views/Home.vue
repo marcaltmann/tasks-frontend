@@ -3,9 +3,10 @@
     <h1>Tasks</h1>
 
     <div class="grid">
-      <Category name="Communicate" v-bind:tasks="tasks1" />
-      <Category name="Home" v-bind:tasks="tasks2" />
-      <Category name="Town" v-bind:tasks="tasks3" />
+      <Category name="Communicate" :tasks="tasks1" />
+      <Category name="Home" :tasks="tasks2" />
+      <Category name="Town" :tasks="tasks3" />
+      <Category name="Other" :tasks="tasks4" />
     </div>
   </div>
 </template>
@@ -30,7 +31,8 @@ export default Vue.extend({
       ],
       tasks3: [
         { content: 'Hallo' }
-      ]
+      ],
+      tasks4: [],
     };
   }
 });

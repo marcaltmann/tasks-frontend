@@ -34,12 +34,14 @@ h3 {
   margin: 1rem 0 0;
 }
 ul {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
   padding: 0;
 }
 li {
-  display: inline-block;
-  margin: 0 10px;
+  margin: 0;
 }
 a {
   color: #42b983;
