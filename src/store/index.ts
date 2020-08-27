@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import { TaskType, TaskState } from "@/components/Task.vue";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -10,25 +12,29 @@ export default new Vuex.Store({
         id: "0",
         content: "Call agent and ask about job offers",
         category: "Communicate",
-        project: "0"
+        project: "0",
+        state: TaskState.Pending
       },
       {
         id: "1",
         content: "Lookup tax documents 2019",
         category: "Home",
-        project: "1"
+        project: "1",
+        state: TaskState.Pending
       },
       {
         id: "2",
         content: "Write letter cancelling old phone contract",
         category: "Communicate",
-        project: "2"
+        project: "2",
+        state: TaskState.Pending
       },
       {
         id: "3",
         content: "Pick up pens from Dussmann",
         category: "Town",
-        project: "3"
+        project: "3",
+        state: TaskState.Pending
       }
     ],
     categories: ["Communicate", "Home", "Town"],
@@ -58,6 +64,10 @@ export default new Vuex.Store({
   mutations: {
     deleteTask(state, id: string) {
       state.tasks = state.tasks.filter(task => task.id !== id);
+    },
+    completeTask(state, id: string) {
+      const task: TaskType = state.tasks.find(task => task.id === id);
+      task.state = TaskState.Done;
     }
   },
   actions: {},
