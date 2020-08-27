@@ -5,17 +5,21 @@
     <div class="grid">
       <Category v-for="cat in categories" :name="cat" :key="cat" />
     </div>
+
+    <NewTaskForm />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import Category from "@/components/Category.vue";
+import NewTaskForm from "@/components/NewTaskForm.vue";
 
 export default Vue.extend({
   name: "Home",
   components: {
-    Category
+    Category,
+    NewTaskForm
   },
   computed: {
     categories() {

@@ -37,6 +37,7 @@ export default new Vuex.Store({
         state: TaskState.Pending
       }
     ],
+    nextTaskId: 4,
     categories: ["Communicate", "Home", "Town"],
     projects: [
       {
@@ -62,12 +63,16 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    deleteTask(state, id: string) {
-      state.tasks = state.tasks.filter(task => task.id !== id);
+    addTask(state, task: TaskType) {
+      task.id = (state.nextTaskId++).toString();
+      state.tasks.push(task);
     },
     completeTask(state, id: string) {
       const task: TaskType = state.tasks.find(task => task.id === id);
       task.state = TaskState.Done;
+    },
+    deleteTask(state, id: string) {
+      state.tasks = state.tasks.filter(task => task.id !== id);
     }
   },
   actions: {},
