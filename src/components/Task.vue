@@ -1,5 +1,5 @@
 <template>
-  <li class="task" :style="{ backgroundColor: color }" v-on:click="toggle">
+  <li class="task" :title="`Project: ${project.name}`" :style="{ backgroundColor: project.color }" v-on:click="toggle">
     <div :class="{ complete: isCompleted }">
       {{ task.content }}
     </div>
@@ -51,12 +51,12 @@ export default Vue.extend({
     isCompleted() {
       return this.task.state === TaskState.Done;
     },
-    color() {
+    project() {
       const projectId = this.task.project;
       const project = this.$store.state.projects.find(
         (proj: ProjectType) => proj.id === projectId
       );
-      return project.color;
+      return project;
     }
   },
   data() {
