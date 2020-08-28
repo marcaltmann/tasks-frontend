@@ -1,5 +1,5 @@
 <template>
-  <form v-on:submit="submit">
+  <form class="NewTaskForm" @submit.prevent="onSubmit">
     <input v-model="content" placeholder="Enter task" />
     <select v-model="category">
       <option v-for="cat in categories" :key="cat" :value="cat">
@@ -40,9 +40,7 @@ export default Vue.extend({
     }
   },
   methods: {
-    submit(e) {
-      e.preventDefault();
-
+    onSubmit(e) {
       const task = {
         id: undefined,
         content: this.content.trim(),
@@ -61,17 +59,16 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "@/_variables.scss";
 
-form {
+.NewTaskForm {
   display: flex;
   justify-content: center;
   margin: 2rem 0 2rem;
 }
 
-form > * {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+.NewTaskForm > * {
+  margin: 0 0.5rem;
 }
 </style>
